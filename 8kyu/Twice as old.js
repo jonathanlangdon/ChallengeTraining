@@ -1,3 +1,7 @@
+//Try # 2
+const twiceAsOld = (dadAge, sonAge) => Math.abs(dadAge - 2 * sonAge);
+
+/*
 function twiceAsOld(dadAge, sonAge) {
   const ageDiff = dadAge - sonAge;
   let hypSon = 1;
@@ -9,7 +13,7 @@ function twiceAsOld(dadAge, sonAge) {
   return Math.abs(hypDad - dadAge);
 }
 
-/*Your function takes two arguments:
+Your function takes two arguments:
 
     current father's age (years)
     current age of his son (years)
