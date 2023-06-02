@@ -8,5 +8,6 @@ Examples (Input --> Output)
 "1234"   -->  true
 "12345"  -->  false
 "a234"   -->  false
+"841" --> False
 
 */
