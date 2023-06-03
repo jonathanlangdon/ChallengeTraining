@@ -6,7 +6,8 @@ function powersOfTwo(n) {
   return arr;
 }
 
-/* Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
+/* Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n (inclusive).
+
 Examples
 
 n = 0  ==> [1]        # [2^0]
