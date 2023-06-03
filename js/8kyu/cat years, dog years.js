@@ -10,7 +10,7 @@ const humanYearsCatYearsDogYears = human => {
 
 /* I have a cat and a dog.
 
-I got them at the same time as kitten/puppy. That was humanYears years ago.
+I got them at the same time as kitten/puppy. That was humanYears years ago and I would like their cat and dog years.
 
 Return their respective ages now as [humanYears,catYears,dogYears]
 
