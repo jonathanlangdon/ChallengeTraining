@@ -1,4 +1,4 @@
-// Grasshopper - Basic Function Fixer
+// Grasshopper - Basic Function Fixer - updated
 
 public class AddFive {
   public static void main(String[] args) {
@@ -10,7 +10,8 @@ public class AddFive {
       public static int addFive(int num) {
           return num + 5;
       }
-      
+ //simplified and condensed 
+
       public void printReturn() {
           System.out.println(addFive(10));
       }
