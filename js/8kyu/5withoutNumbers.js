@@ -1,7 +1,7 @@
 // 5 without numbers!!
 
 function unusualFive() {
-  return "aaaaa".length;
+  return "jesus".length;
 }
 
 /* Write a function that always returns 5
