@@ -1,0 +1,55 @@
+Python - well of ideas - count method
+def well(x):
+    c = x.count('good')
+    return 'I smell a series!' if c > 2 else 'Publish!' if c else 'Fail!'
+
+Python - Square Sum - list comprehension
+
+def square_sum(numbers):
+    return sum(x ** 2 for x in numbers)
+
+Python - Sum of positive (list comprehension)
+
+def positive_sum(arr):
+    return sum(x for x in arr if x > 0)
+
+Python - Find numbers which are divisible by given number = list comprehension
+def divisible_by(numbers, divisor):
+    return [x for x in numbers if x%divisor == 0]
+
+JS - Categorize new Member - destructuring
+function openOrSenior(data){
+  return data.map(([age, handicap]) => (age > 54 && handicap > 7) ? 'Senior' : 'Open');
+}
+
+JS -Find the next perfect square!
+function findNextSquare(sq) {
+  return Math.sqrt(sq)%1? -1 : Math.pow(Math.sqrt(sq)+1,2);
+}
+
+jS - short long short - length property
+function solution(a, b) {
+  return a.length < b.length ? a + b + a : b + a + b
+}
+
+JS - credit card slice - slicing & regex
+function maskify(cc) {
+  return cc.slice(0, -4).replace(/./g, '#') + cc.slice(-4);
+}
+
+JS - isograms - using a set
+function isIsogram(str){
+	return new Set(str.toUpperCase()).size == str.length;
+}
+
+JS - Find Multiples of a Number - Array constructor, fill, map
+function findMultiples(int,limit){
+  return Array(Math.floor(limit/int)).fill(1).map((x,i)=>int*(i+1));
+}
+
+JS - remove ! at end - using regex
+const remove = s => s.replace(/!$/, '');
+
+PY -remove ! at end - using slicing
+def remove(s):
+    return s[:-1] if s.endswith('!') else s
