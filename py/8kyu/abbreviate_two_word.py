@@ -1,3 +1,6 @@
+# convert a first/last name into initials
+
+
 def abbrev_name(name):
     list = name.upper().split(" ")
     return f"{list[0][0]}.{list[1][0]}"
