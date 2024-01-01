@@ -10,8 +10,10 @@ count=0
 if [ -n "$(ls -A ./0staging)" ]; then
   # Directly iterate over the files in the directory
   for file in ./0staging/*; do
+    filename=$(basename "$file")
+
     # Skip specific folder and file
-    if [ "$file" = "/templates" ] || [ "$file" = "package.json" ]; then
+    if [ "$filename" = "templates" ] || [ "$filename" = "package.json" ]; then
       continue
     fi
 
