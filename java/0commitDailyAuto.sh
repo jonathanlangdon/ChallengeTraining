@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Prompt the user for the number of files to be processed
-max_files=1
+# Generate a random number between 1 and 2
+max_files=$((1 + RANDOM % 2))
 
 # Counter for the number of files processed
 count=0
