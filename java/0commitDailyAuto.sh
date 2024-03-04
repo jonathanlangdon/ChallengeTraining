@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Generate a random number between 1 and 2
-max_files=$((1 + RANDOM % 2))
+# Generate a random number either 1 or 5
+max_files=$(( ( RANDOM % 2 ) * 4 + 1 ))
 
 # Counter for the number of files processed
 count=0
