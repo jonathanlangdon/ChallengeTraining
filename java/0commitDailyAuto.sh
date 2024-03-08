@@ -6,6 +6,11 @@ max_files=$(( ( RANDOM % 2 ) * 4 + 1 ))
 # Counter for the number of files processed
 count=0
 
+# Sleep for a random interval between 1 and 30 minutes
+sleep_time=$((RANDOM % 1740 + 60)) # This generates a random number between 60 and 1800
+echo "Sleeping for $sleep_time seconds."
+sleep $sleep_time
+
 # Check if there are any files in the 0staging folder
 if [ -n "$(ls -A ./0staging)" ]; then
   # Directly iterate over the files in the directory
