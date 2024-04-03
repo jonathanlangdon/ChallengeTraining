@@ -10,6 +10,13 @@ count=0
 if [ -n "$(ls -A ./0staging)" ]; then
   # Directly iterate over the files in the directory
   for file in ./0staging/*; do
+    filename=$(basename "$file")
+
+    # Skip specific folder and file
+    if [ "$filename" = "templates" ] || [ "$filename" = "package.json" ]; then
+      continue
+    fi
+
     # Only process up to the max_files
     if [ $count -eq $max_files ]; then
       break
@@ -38,4 +45,4 @@ if [ -n "$(ls -A ./0staging)" ]; then
 else
   echo "No files found in the 0staging directory"
 fi
-sleep 5
+
