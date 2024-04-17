@@ -7,7 +7,7 @@ events=$(curl -s https://api.github.com/users/jonathanlangdon/events)
 today=$(date -u +"%Y-%m-%dT")
 
 # Check for any PushEvent today
-if echo "$events" | jq -e '.[] | select(.type == "PushEvent" and .created_at | startswith("'"$today"'"))' > /dev/null; then
+if echo "$events" | jq -e '.[] | select(.type == "PushEvent" and (.created_at | tostring) | startswith("'"$today"'"))' > /dev/null; then
   echo "PushEvent found for today. Exiting script."
   exit 0
 fi
