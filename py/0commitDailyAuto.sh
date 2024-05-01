@@ -1,9 +1,24 @@
-# updated to user-inputed # of files to process... and removed sleep 5
-
 #!/bin/bash
 
-# Prompt the user for the number of files to be processed
-read -p "Enter the number of files to process: " max_files
+# Sleep for a random interval between 1 and 30 minutes
+sleep_time=$((RANDOM % 1740 + 60)) # This generates a random number between 60 and 1800
+echo "Sleeping for $sleep_time seconds."
+#sleep $sleep_time
+
+# Fetch the latest events for my github account
+events=$(curl -s https://api.github.com/users/jonathanlangdon/events)
+
+# Get today's date in the format used by GitHub timestamps
+today=$(date -u +"%Y-%m-%dT")
+
+# Check for any PushEvent today
+if echo "$events" | jq -e '.[] | select(.type == "PushEvent" and ( .created_at | tostring | startswith("'"$today"'"))) // empty' > /dev/null; then
+  echo "PushEvent found for today. Exiting script."
+  exit 0
+fi
+
+# Generate a random number either 1 or 5
+max_files=$(( ( RANDOM % 2 ) * 4 + 1 ))
 
 # Counter for the number of files processed
 count=0
