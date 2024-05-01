@@ -3,7 +3,7 @@
 # Sleep for a random interval between 1 and 30 minutes
 sleep_time=$((RANDOM % 1740 + 60)) # This generates a random number between 60 and 1800
 echo "Sleeping for $sleep_time seconds."
-#sleep $sleep_time
+sleep $sleep_time
 
 # Fetch the latest events for my github account
 events=$(curl -s https://api.github.com/users/jonathanlangdon/events)
