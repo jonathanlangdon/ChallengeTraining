@@ -11,9 +11,9 @@ events=$(curl -s https://api.github.com/users/jonathanlangdon/events)
 # Get today's date in the format used by GitHub timestamps
 today=$(date -u +"%Y-%m-%dT")
 
-# Check for any PushEvent today
-if echo "$events" | jq -e '.[] | select(.type == "PushEvent" and ( .created_at | tostring | startswith("'"$today"'"))) // empty' > /dev/null; then
-  echo "push event found for today. Exiting script."
+# Check for any PushEvent today in Eastern Time
+if echo "$events" | jq -e --arg today "$today" '.[] | select(.type == "PushEvent" and ((.created_at | strptime("%Y-%m-%dT%H:%M:%SZ") | mktime | strftime("%Y-%m-%dT", localtime) | tostring) | startswith($today))) // empty' > /dev/null; then
+  echo "Push event found for today. Exiting script."
   exit 0
 else
   echo "No push event found for today."
