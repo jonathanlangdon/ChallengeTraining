@@ -3,7 +3,7 @@
 # Sleep for a random interval between 1 and 30 minutes
 sleep_time=$((RANDOM % 1740 + 60)) # This generates a random number between 60 and 1800
 echo "Sleeping for $sleep_time seconds."
-# sleep $sleep_time
+sleep $sleep_time
 
 todayESTMidnight=$(TZ="America/New_York" date +"%Y-%m-%d 00:00:00")
 echo "Today EST midnight is" $todayESTMidnight
@@ -16,10 +16,10 @@ gitHubEvent=$(date -u -d "$eventDateString" "+%s")
 # "2024-05-09T03:59:59Z" # sample date/time for event
 
 if [ $gitHubEvent -ge $todayMidnightUTC ]; then
-    echo "the most recent post is today. Exiting script."
+    echo "the most recent post is today(EST). Exiting script."
     exit 0
 else
-    echo "the most recent post before today"
+    echo "the most recent post was before today(EST)"
 fi
 
 # Generate a random number either 1 or 5
