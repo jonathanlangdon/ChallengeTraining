@@ -5,16 +5,21 @@ sleep_time=$((RANDOM % 1740 + 60)) # This generates a random number between 60 a
 echo "Sleeping for $sleep_time seconds."
 sleep $sleep_time
 
-# Fetch the latest events for my github account
+todayESTMidnight=$(TZ="America/New_York" date +"%Y-%m-%d 00:00:00")
+echo "Today EST midnight is" $todayESTMidnight
+todayMidnightUTC=$(date -u -d "$todayESTMidnight - 3 hours" "+%s")
+
 events=$(curl -s https://api.github.com/users/jonathanlangdon/events)
+eventDateString=$(echo "$events" | jq -r '.[0].created_at')
+echo "The last push event in UTC was $eventDateString"
+gitHubEvent=$(date -u -d "$eventDateString" "+%s")
+# "2024-05-09T03:59:59Z" # sample date/time for event
 
-# Get today's date in the format used by GitHub timestamps
-today=$(date -u +"%Y-%m-%dT")
-
-# Check for any PushEvent today
-if echo "$events" | jq -e '.[] | select(.type == "PushEvent" and ( .created_at | tostring | startswith("'"$today"'"))) // empty' > /dev/null; then
-  echo "PushEvent found for today. Exiting script."
-  exit 0
+if [ $gitHubEvent -ge $todayMidnightUTC ]; then
+    echo "the most recent post is today(EST). Exiting script."
+    exit 0
+else
+    echo "the most recent post was before today(EST)"
 fi
 
 # Generate a random number either 1 or 5
