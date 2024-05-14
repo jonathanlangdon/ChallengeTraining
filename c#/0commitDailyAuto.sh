@@ -30,6 +30,15 @@ count=0
 
 # Check if there are any files in the 0staging folder
 if [ -n "$(ls -A ./0staging)" ]; then
+  # Count the number of files in the 0staging folder
+  file_count=$(ls -1 ./0staging | wc -l)
+  echo "There are $file_count files in the 0staging folder."
+
+  # If the number of files is less than 5, set max_files to 1
+  if [ $file_count -lt 5 ]; then
+    max_files=1
+  fi
+
   # Directly iterate over the files in the directory
   for file in ./0staging/*; do
     # Only process up to the max_files
