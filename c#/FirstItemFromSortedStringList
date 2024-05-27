@@ -1,0 +1,18 @@
+// given list of strings, sort it, then return first value
+
+using System;
+
+public class FirstItemFromSortedStringList
+{
+	public static string TwoSort(string[] arr)
+	{
+		Array.Sort(arr, StringComparer.Ordinal);
+		return string.Join("***", arr[0].ToCharArray());
+	}
+
+	public static void Main(string[] args)
+	{
+		System.Console.WriteLine(TwoSort(new [] {"Lets", "turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic", "ones"}));
+		// "L***e***t***s"
+	}
+}
