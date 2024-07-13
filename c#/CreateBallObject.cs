@@ -5,12 +5,9 @@ public class CreateBallObject
 	public class Ball {
 		public string ballType { get; set; }
 		
-		public Ball(string ballType) {
+		public Ball(string ballType = "regular") 
+        {
 			this.ballType = ballType;
-		}
-		
-		public Ball() {
-			this.ballType = "regular";
 		}
 	}
 
