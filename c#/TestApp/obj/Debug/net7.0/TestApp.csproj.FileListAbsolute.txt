@@ -1,0 +1,14 @@
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/bin/Debug/net7.0/TestApp
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/bin/Debug/net7.0/TestApp.deps.json
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/bin/Debug/net7.0/TestApp.runtimeconfig.json
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/bin/Debug/net7.0/TestApp.dll
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/bin/Debug/net7.0/TestApp.pdb
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/TestApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/TestApp.AssemblyInfoInputs.cache
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/TestApp.AssemblyInfo.cs
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/TestApp.csproj.CoreCompileInputs.cache
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/TestApp.dll
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/refint/TestApp.dll
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/TestApp.pdb
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/TestApp.genruntimeconfig.cache
+/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/obj/Debug/net7.0/ref/TestApp.dll
