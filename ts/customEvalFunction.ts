@@ -1,4 +1,4 @@
-// Adding support for decimals
+// additional complex cases
 
 export function calc(expression: string): number {
   const noSpaceExp: string = expression.replace(/\s/g, '');
@@ -7,6 +7,7 @@ export function calc(expression: string): number {
 
 function evaluatePMDAS(exp: string): string {
   let nextExp: string = evaluateParenthesis(exp);
+  console.log(nextExp);
   nextExp = evaluateMultiplyDivide(nextExp);
   nextExp = evaluateAddSub(nextExp);
   return nextExp;
@@ -96,5 +97,23 @@ function evaluateAddSub(exp: string): string {
 // console.log(calc('-123')); // -123
 // console.log(calc('123')); // 123
 // console.log(calc('12* 123')); // 1476
-console.log(calc('2 /2+3 * 4.75- -6')); //21.25
-console.log(calc('2 / (2 + 3) * 4.33 - -6')); // 7.732
+// console.log(calc('2 /2+3 * 4.75- -6')); //21.25
+// console.log(calc('2 / (2 + 3) * 4.33 - -6')); // 7.732
+
+// console.log(calc('((2 + 3) * (4 - 2)) * (1 + 2)')); // 30
+// console.log(calc('(-2 + 3) * (-4 - -6)')); // 2
+// console.log(calc('((2 - 3) * (4 + 5)) + -1')); // -10
+// console.log(calc('2 * (3 + (4 * 5)) - (6 / 2)')); // 43
+console.log(calc('(((1 + 2) * 3) + 4) * 5')); // 65
+// console.log(calc('5+-3*2')); // -1
+// console.log(calc('10/2*-3+4')); // -11
+// console.log(calc('0*3 + 5')); // 5
+// console.log(calc('0/1')); // 0
+// console.log(calc('0.1 + 0.2')); // 0.3
+// console.log(calc('0.1 * 0.2')); // 0.02
+// console.log(calc('1.2345 * 6.789')); // 8.3801905
+// console.log(calc('1 + 2 - 3 * 4 / 5 + 6 * (7 + 8) - (9 * 10) / (11 + 12)')); // 86.687
+// console.log(calc(' 3 +  5   * 2 ')); // 13
+// console.log(calc('  3+5 *  2 ')); // 13
+// console.log(calc('(((((10)))))')); // 10
+// console.log(calc('((10) + ((5)))')); // 15
