@@ -1,4 +1,4 @@
-// more cases: multiple () with negatives outside
+// more edge cases
 
 export function calc(expression: string): number {
   const noSpaceExp: string = expression.replace(/\s/g, '');
@@ -7,7 +7,6 @@ export function calc(expression: string): number {
 
 function evaluatePMDAS(exp: string): string {
   let nextExp: string = evaluateParenthesis(exp);
-  console.log(`next:${nextExp}`);
   nextExp = evaluateMultiplyDivide(nextExp);
   nextExp = evaluateAddSub(nextExp);
   return nextExp;
@@ -30,7 +29,8 @@ function evaluateParenthesis(exp: string): string {
       insideExp += exp[i];
     }
   }
-  const newExp = exp.replace('(' + insideExp + ')', evaluatedInside);
+  let newExp = exp.replace('(' + insideExp + ')', evaluatedInside);
+  // newExp.replace('--', '')
   //will return result of evaluations recursively, eventually giving an expression with no ()
   return evaluateParenthesis(newExp);
 }
@@ -59,6 +59,15 @@ function evaluateAddSub(exp: string): string {
   let newExp = exp.replace(/-*\d+(\.\d+)?[+-]-*\d+(\.\d+)?/, addSubExp => {
     addSubExp = addSubExp.replace('+-', '-').replace('--', '+');
     const terms: string[] = [...(addSubExp.match(/[-+]*\d+(\.\d+)?/g) || [])];
+    terms.forEach((term, index) => {
+      const termNegArr: string[] = term.match(/-/g) || [];
+      const negCount: number = termNegArr ? termNegArr.length : 0;
+      let isPositive = negCount % 2 === 0;
+      const absExp = term.replace(/-/g, '');
+      if (!isPositive) {
+        terms[index] = '-' + absExp;
+      } else terms[index] = absExp;
+    });
     console.log(`terms:${terms}`);
     const result: number = Number(terms[0]) + Number(terms[1]);
     return String(result);
@@ -66,8 +75,8 @@ function evaluateAddSub(exp: string): string {
   return evaluateAddSub(newExp);
 }
 
-console.log(calc('(1 - 2) + -(-(-(-4)))'));
-
+console.log(calc('1 - -(-(-(-4)))')); // -3
+// console.log(calc("(1 - 2) + -(-(-(-4)))")); // 3
 // console.log(evaluateParenthesis('((3+1)+(1+3))+2')); // 8+2
 // console.log(evaluateParenthesis('(4+(1+3))+2')); // 8+2
 // console.log(evaluateParenthesis('((3+1)+4)+2')); // 8+2
