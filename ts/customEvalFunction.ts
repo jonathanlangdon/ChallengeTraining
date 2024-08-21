@@ -1,4 +1,4 @@
-// more edge cases
+// fully solved!
 
 export function calc(expression: string): number {
   const noSpaceExp: string = expression.replace(/\s/g, '');
@@ -57,7 +57,7 @@ function evaluateMultiplyDivide(exp: string): string {
 function evaluateAddSub(exp: string): string {
   if (!/\d+(\.\d+)?[+-]/.test(exp)) return exp;
   let newExp = exp.replace(/-*\d+(\.\d+)?[+-]-*\d+(\.\d+)?/, addSubExp => {
-    addSubExp = addSubExp.replace('+-', '-').replace('--', '+');
+    addSubExp = addSubExp.replace('+-', '-');
     const terms: string[] = [...(addSubExp.match(/[-+]*\d+(\.\d+)?/g) || [])];
     terms.forEach((term, index) => {
       const termNegArr: string[] = term.match(/-/g) || [];
@@ -68,14 +68,13 @@ function evaluateAddSub(exp: string): string {
         terms[index] = '-' + absExp;
       } else terms[index] = absExp;
     });
-    console.log(`terms:${terms}`);
     const result: number = Number(terms[0]) + Number(terms[1]);
     return String(result);
   });
   return evaluateAddSub(newExp);
 }
 
-console.log(calc('1 - -(-(-(-4)))')); // -3
+// console.log(calc("1 - -(-(-(-4)))")) // -3
 // console.log(calc("(1 - 2) + -(-(-(-4)))")); // 3
 // console.log(evaluateParenthesis('((3+1)+(1+3))+2')); // 8+2
 // console.log(evaluateParenthesis('(4+(1+3))+2')); // 8+2
