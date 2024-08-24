@@ -1,13 +1,8 @@
-# confirm correct ship list. Done!
+# fixed some out of range errors
 
 
 def validate_battlefield(field):
     return has_no_diagonal_ships(field) and has_valid_ship_count(field)
-
-
-def count_total_cells(field):
-    flat_field = [cell for row in field for cell in row]
-    return flat_field.count(1)
 
 
 def has_no_diagonal_ships(field):
@@ -32,7 +27,9 @@ def list_horiz_ships(field):
                 ship_size = 0  # log ship size and reset
             elif cur_cell == 1:
                 # check to make sure not vertical ship
-                if field[i - 1][j] == 1 or field[i + 1][j] == 1:
+                if (i > 0 and field[i - 1][j] == 1) or (
+                    i < len(field) - 1 and field[i + 1][j] == 1
+                ):
                     continue
                 ship_size += 1  # update ship size
             if j == 9 and ship_size > 0:
@@ -54,7 +51,9 @@ def list_vertical_ships(field):
                     ship_size = 0  # log ship size and reset
             elif cur_cell == 1:
                 # check to make sure not horizontal ship
-                if field[j][i - 1] == 1 or field[j][i + 1] == 1:
+                if (i > 0 and field[j][i - 1] == 1) or (
+                    i < len(field) - 1 and field[j][i + 1] == 1
+                ):
                     continue
                 ship_size += 1  # update ship size
             if j == 9 and ship_size > 1:
@@ -74,7 +73,7 @@ def has_valid_ship_count(field):
     return get_all_ships(field) == [1, 1, 1, 1, 2, 2, 2, 3, 3, 4]
 
 
-battleField = [
+battleField1 = [
     [1, 0, 0, 0, 0, 1, 1, 0, 0, 0],
     [1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
     [1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
@@ -87,4 +86,32 @@ battleField = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ]
 
-print(validate_battlefield(battleField))
+battleField2 = [
+    [0, 0, 1, 1, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1, 0, 1, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+    [0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 1, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+]
+
+battleField3 = [
+    [0, 1, 0, 1, 0, 1, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
+]
+
+print(validate_battlefield(battleField1))  # True
+print(validate_battlefield(battleField2))  # True
+print(validate_battlefield(battleField3))  # True
