@@ -1,8 +1,13 @@
-# created function to combine two colors
+# Create colored triangle
 
 
 def triangle(row):
-    return combine_colors(row)
+    if len(row) == 1:
+        return row
+    new_row = ""
+    for i in range(1, len(row)):
+        new_row += combine_colors(row[i - 1 : i + 1])
+    return triangle(new_row)
 
 
 def combine_colors(colors):
