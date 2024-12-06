@@ -1,4 +1,4 @@
-// strip extra characters out of a string according to passed in parameters
+// strip extra characters out of a string according to passed in parameters - update 2
 
 import java.util.Arrays;
 
