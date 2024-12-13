@@ -1,4 +1,6 @@
-// strip extra characters out of a string according to passed in parameters - update 4
+// strip extra characters out of a string according to passed in parameters - update 5
+
+import java.util.Arrays;
 
 public class StripCommentText {
     
@@ -12,7 +14,7 @@ public class StripCommentText {
           if (symbolIndex == 0) {
             outputLines[i] = "";
           } else {
-            outputLines[i] = outputLines[i].substring(0, symbolIndex - 1);
+            outputLines[i] = outputLines[i].substring(0, symbolIndex).replaceAll("\\s+$", "");
           }
         } else {
           outputLines[i] = outputLines[i].replaceAll("\\s+$", "");
@@ -46,6 +48,9 @@ public class StripCommentText {
 
     System.out.println(stripComments("a \n\n! \n\nf\n\ne ", new String[] { "!" }) + "\n***end***");
     // a\n\n\n\nf\n\ne 
+
+    System.out.println(stripComments("c \n\ne-e\n\nefe", new String[] { "-" }) + "\n***end***");
+    // c \n\ne\n\nefe
     
 
   }
