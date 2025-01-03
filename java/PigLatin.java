@@ -1,4 +1,4 @@
-// Convert strings to pig latin - part 1
+// Convert strings to pig latin - finished
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -7,15 +7,15 @@ public class PigLatin {
     public static String pigIt(String str) {
         String[] words = str.split(" ");
         String[] pigWords = new String[words.length];
-        String[] punctuation = {"!", ".", "?", ",", ";", ":"};
+        Character[] punctuation = {'!', '.', '?', ',', ';', ':'};
         for (int i = 0; i < words.length; i++) {
-          if (Arrays.asList(punctuation).contains(words[i][0])) {
+          if (Arrays.asList(punctuation).contains(words[i].charAt(0))) {
             pigWords[i] = words[i];
           } else {
-            pigWords[i] = "" //finish
+            pigWords[i] = words[i].substring(1) + words[i].charAt(0) + "ay";
           }
         }
-        return String.join(" ", words);
+        return String.join(" ", pigWords);
     }
 
     public static void main(String[] args) {
