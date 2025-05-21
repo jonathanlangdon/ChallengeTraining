@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "YILTX/+nkZ/upNg56AxsNvXhMZ3uUFG6lVwd8DRVSGiJdRJSb+wfHxHdvypH0WId2q0Je1s65wSNirYx4nIFkQ==",
+  "dgSpecHash": "Rv1kIo6/p3s=",
   "success": true,
   "projectFilePath": "/Users/langdon/Library/CloudStorage/Dropbox/CODE/0CodeWars/c#/TestApp/TestApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/langdon/.nuget/packages/microsoft.netcore.app.ref/7.0.20/microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/langdon/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.20/microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/langdon/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.20/microsoft.netcore.app.host.osx-arm64.7.0.20.nupkg.sha512"
+  ],
   "logs": []
 }
