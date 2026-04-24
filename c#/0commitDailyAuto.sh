@@ -17,8 +17,8 @@ else
     echo "the most recent post was before today(EST)"
 fi
 
-# Generate a random number either 1 or 5
-max_files=$(( ( RANDOM % 2 ) * 4 + 1 ))
+# Generate a random number either 1 or 2
+max_files=$(( ( RANDOM % 2 ) * 1 + 1 ))
 
 # Counter for the number of files processed
 count=0
