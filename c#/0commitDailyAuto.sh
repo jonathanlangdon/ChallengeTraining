@@ -1,20 +1,19 @@
 #!/bin/bash
 
-todayESTMidnight=$(TZ="America/New_York" date +"%Y-%m-%d 00:00:00")
-echo "Today EST midnight is" $todayESTMidnight
-todayMidnightUTC=$(date -u -d "$todayESTMidnight - 3 hours" "+%s")
+todayMidnightUTC=$(TZ="America/New_York" date -d "today 00:00:00" "+%s")
+echo "Today New York midnight timestamp is $todayMidnightUTC"
 
 events=$(curl -s https://api.github.com/users/jonathanlangdon/events)
 eventDateString=$(echo "$events" | jq -r '.[0].created_at')
-echo "The last push event in UTC was $eventDateString"
-gitHubEvent=$(date -u -d "$eventDateString" "+%s")
-# "2024-05-09T03:59:59Z" # sample date/time for event
+echo "The most recent GitHub event in UTC was $eventDateString"
 
-if [ $gitHubEvent -ge $todayMidnightUTC ]; then
-    echo "the most recent post is today(EST). Exiting script."
+gitHubEvent=$(date -u -d "$eventDateString" "+%s")
+
+if [ "$gitHubEvent" -ge "$todayMidnightUTC" ]; then
+    echo "the most recent event is today in New York time. Exiting script."
     exit 0
 else
-    echo "the most recent post was before today(EST)"
+    echo "the most recent event was before today in New York time"
 fi
 
 # Generate a random number either 1 or 2
@@ -51,7 +50,8 @@ if [ -n "$(ls -A ./0staging)" ]; then
     mv -i "$file" .
 
     # Commit the change and push it to the remote repository
-    git add .
+    git add "./$filename"
+    git add -u "./0staging/$filename"
     git commit -m "$comment"
     git push
     sleep 2
